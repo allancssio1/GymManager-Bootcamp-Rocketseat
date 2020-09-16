@@ -1,0 +1,226 @@
+@import "https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap";
+
+:root{
+  --color-white: #ffffff; /*variavel para reutilizar cor em css nomeada de "--color-green"*/
+  --color-rocket: #7159c1; /*cor da rocketseat*/
+  --color-rocket-secondary: #644f79;
+  --color-yellow: #F7DF1E;
+  --color-delete: rgb(243, 123, 123);
+  --color-delete-secondary: rgb(243, 0, 0);
+
+}
+
+*{
+  margin:0;
+  padding: 0;
+  border: none;
+}
+
+body{
+  background: var(--color-rocket);
+  font-family: 'Roboto', sans-serif;
+}
+header{
+  background: var(--color-white);
+  width: 100%;
+  text-align: center;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+.links{
+  font-size: 22px;  
+}
+.links a + a{
+  margin-left: 32px;
+}
+.links a{
+  text-decoration: none;
+  color: #777777;
+  position: relative;
+}
+
+.links a.active{
+  font-weight: bold;
+  color: var(--color-rocket);
+}
+.links a:hover{
+  color: var(--color-rocket);
+}
+.links a::after{
+  content: "";
+  width: 00%;
+  height: 2px;
+  background-color: var(--color-rocket);
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+}
+.links a:hover::after{
+  width: 100%;
+  transition: width 400ms ease-in-out;
+}
+
+/* === CARD ===*/
+.card{
+  box-sizing: border-box;
+  min-height: 400px;
+  width: 800px;
+  background-color: white;
+  margin: 45px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 10px 10px 20px var(--color-rocket-secondary);
+
+  /* animation */
+  animation: up 200ms ease-out;
+} 
+/* === TABELA DE INSTUTORES === */
+.table-container{
+  display: block;
+  box-sizing: border-box;
+  padding: 40px;
+}
+.table-container table{
+  border-spacing: 0;
+}
+.table-container thead th{
+  text-align: left;
+}
+th, td{
+  padding: 8px;
+  border-bottom: 1px solid #d9d9d9;
+}
+th {
+  text-transform: uppercase;
+  color: #777;
+  font-size: 14px;
+}
+.table-container thead th:last-child, td:last-child {
+  text-align: center;
+}
+
+tbody tr:last-child td{
+  border-bottom: none;
+}
+tbody tr td:first-child {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  align-items: center;
+}
+tbody tr td:first-child span{
+  width: 48px;
+  height: 48px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  box-shadow: 3px 1px 6px -4px black;
+  border: 2px solid white;
+}
+tbody tr td:last-child a,
+.table-container > a{
+  background: var(--color-rocket);
+  padding: 8px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
+  font-size: 12px;
+  border-radius: 4px;
+} 
+.table-container > a{
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+/* === DETALHES === */
+.details{
+  padding: 20px;
+}
+.details .item{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 16px 0;
+}
+.details .item:last-child{
+  border: none;
+}
+.details .item  div:nth-child(1){
+  font-size: 14px;
+  color: #777;
+  line-height: 24px;
+  letter-spacing: 0.7px;
+  font-weight: normal;
+}
+.details .item div:nth-child(2){
+  font-size: 18px;
+  font-weight: bold;
+  color: #555;
+}
+.details .item span,
+.table-container tbody tr td:nth-child(2) span{
+  padding: 8px 16px;
+  border-radius: 16px;
+  background-color: var(--color-yellow);
+  color: #777;
+  margin-right: 4px;
+  margin-top: 8px;
+  display: inline-block;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+/* === FORM === */
+input, select{
+  width: 100%;
+  outline: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: #555;
+}
+input[type='radio']{
+  width: initial;
+  margin-right: 4px;
+}
+input::placeholder{
+  font-size: 16px;
+  font-weight: normal;
+}
+button[type='submit'], a.buttom{
+  padding: 8px 32px;
+  background-color: var(--color-rocket);
+  color: white;
+  font-size: 16px;
+  border-radius: 4px;
+  margin-top: 32px;
+  width: 100%;
+}
+button[type='submit']:hover,
+a.buttom:hover{
+  background-color: var(--color-rocket-secondary);
+
+}
+#form-delete button[type='submit']{
+  background-color: var(--color-delete);
+  margin-top: 16px;
+}
+#form-delete button[type='submit']:hover{
+  background-color: var(--color-delete-secondary);
+
+}
+
+a.buttom{
+  display: block;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* ==ANIMATION == */
+@keyframes up{
+  0%{
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100%{
+    opacity: 1;
+  }
+}
