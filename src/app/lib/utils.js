@@ -1,5 +1,5 @@
 module.exports = {
-  age: function (timestamp) {
+  age (timestamp) {
     const today = new Date()
     const birthDate = new Date(timestamp)
   
@@ -12,7 +12,7 @@ module.exports = {
   
     return age
   },
-  date: function (timestamp) {
+  date (timestamp) {
     const date = new Date(timestamp)
     const years = date.getUTCFullYear()
     const month = `0${date.getUTCMonth() + 1}`.slice(-2)
@@ -25,12 +25,12 @@ module.exports = {
       birthDay: `${day}/${month}`
     }
   },
-  service: function (element) {
+  service (element) {
     for(let index=0; index < element.length; index++){
       return element[index].services.split(',')
     }
   },
-  typeBlood: function (element) {
+  typeBlood (element) {
     switch (element) {
       case 'A1': return 'A+'
       case 'A0': return 'A-'    
