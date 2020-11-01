@@ -4,7 +4,15 @@
 
   <div class="card table-container">
 
-    <a href="/instructors/create">Novo</a>
+    <div class="header">
+      <a class="buttom" href="/instructors/create">Novo</a>
+      
+      <form action="/instructors" method="GET">
+        <input type="text" name="filter" value="{{filter}}" placeholder="Por nome ou atendimento" >
+        <button type="submit">Filtrar</button>
+      </form>
+    </div>
+
     <table width="100%">
       
       <thead>
@@ -12,6 +20,7 @@
         <tr>
           <th>Instrutor</th>
           <th>Atuação</th>
+          <th>Alunos</th>
           <th>Ação</th>
         </tr>
         
@@ -28,6 +37,9 @@
             {% for service in instructor.services %}
               <span>{{service}}</span>
             {% endfor %}
+            </td>
+            <td>
+              <span>{{instructor.total_students}}</span>
             </td>
             <td>
               <a href="/instructors/{{instructor.id}}">Ver</a>

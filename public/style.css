@@ -96,7 +96,8 @@ th {
   color: #777;
   font-size: 14px;
 }
-.table-container thead th:last-child, td:last-child {
+.table-container thead th:last-child, td:last-child,
+.table-container thead th:nth-child(3) {
   text-align: center;
 }
 
@@ -116,6 +117,9 @@ tbody tr td:first-child span{
   border-radius: 50%;
   box-shadow: 3px 1px 6px -4px black;
   border: 2px solid white;
+}
+tbody tr td:nth-child(3){
+  text-align: center;
 }
 tbody tr td:last-child a,
 .table-container > a{
@@ -212,6 +216,29 @@ a.buttom{
   box-sizing: border-box;
   text-align: center;
   text-decoration: none;
+}
+
+/*==FILTER== */
+.table-container .header{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin: 0 0 32px 0;
+}
+.table-container .header a,
+.table-container .header form button{
+  margin-top: 0;
+  width: 120px;
+}
+.table-container .header form{
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  gap: 32px;
+}
+.table-container .header form input{
+  border: 1px solid #eee;
+  padding: 4px 8px;
 }
 
 /* ==ANIMATION == */
