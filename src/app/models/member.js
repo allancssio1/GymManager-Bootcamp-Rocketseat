@@ -5,9 +5,19 @@ module.exports = {
   all (callback) {
     db.query (`SELECT * FROM members`, function (err, results) {
       if (err) throw `Error Database ${err}`
-      results.ro
       callback(results.rows)
     })
+  },
+  findBy (filter, callback) {
+    db.query (`
+      SELECT members.*
+      FROM members
+      WHERE members.name ILIKE '%${filter}%'
+      ORDER BY members.name ASC`, function (err, results) {
+        if (err) throw `Database ${err}`
+        callback(results.rows)
+      }
+    )
   },
   create (data, callback) {
     const query = `
@@ -48,6 +58,33 @@ module.exports = {
   instructorSeleteOption (callback) {
     db.query (`SELECT name, id FROM instructors`, function (err, results) {
       if (err) throw `Error Databese ${err}`
+      callback(results.rows)
+    })
+  },
+  paginate (params) {
+    const {filter, limit, offset, callback} = params
+    let query = '',
+      filterQuery = '',
+      totalQuery = `(
+        SELECT count(*) FROM members
+      ) AS total`
+
+    if (filter) {
+      filterQuery = `
+        WHERE members.name ILIKE '%${filter}%'
+        OR members.email ILIKE '%${filter}%'`
+      totalQuery = `(
+        SELECT count(*)
+        FROM members ${filterQuery}
+      ) AS total`
+    }
+    query = `
+      SELECT members.*, ${totalQuery}
+      FROM members
+      ${filterQuery}
+      LIMIT $1 OFFSET $2`
+    db.query(query, [limit, offset], function (err, results) {
+      if (err) throw `Database error ${err}`
       callback(results.rows)
     })
   }

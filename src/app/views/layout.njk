@@ -16,6 +16,8 @@
     </header>
 
     {% block content %}{% endblock %}
-    <script src="/script.js"></script>
+    {% block scripts %}
+      <script src="/script.js"></script>
+    {% endblock scripts %}
   </body>
 </html>

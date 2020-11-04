@@ -240,6 +240,30 @@ a.buttom{
   border: 1px solid #eee;
   padding: 4px 8px;
 }
+.table-container{
+  display: grid;
+  grid-template: 64px 1fr 16px / 1fr;
+  row-gap: 8px;
+}
+.table-container .header{
+  margin: 0;
+  align-self: start;
+}
+.table-container .pagination{
+  margin: 0;
+  align-self: end;
+  justify-self: center;
+}
+.pagination a,
+.pagination span{
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--color-rocket);
+  margin-right: 8px;
+}
+.pagination a:hover{
+  color: var(--color-rocket-secondary);
+}
 
 /* ==ANIMATION == */
 @keyframes up{
